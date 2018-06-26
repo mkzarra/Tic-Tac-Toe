@@ -1,13 +1,19 @@
-const config = require('./config.js')
+const config = require('./config')
+
+const createGame = function () {
+    return $.ajax({
+        url: config.apiUrl 
+    })
+}
 
 const move = function () {
-    $.ajax({
+    return $.ajax({
         url: config.apiUrl,
-        method: 'POST',
-        data
+        method: 'PATCH'
     })
 }
 
 module.exports = {
+    createGame,
     move
 }

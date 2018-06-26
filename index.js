@@ -5,27 +5,50 @@
 
 // load manifests
 // scripts
-require('./assets/scripts/index.js')
-require('./assets/scripts/ui.js')
+require('./assets/scripts/index')
+require('./assets/scripts/ui')
 // styles
 require('./assets/styles/index.scss')
 const cellLength = 3
-const gameBoard
+let gameBoard = []
+let currentPlayer = 'X'
 
+// function selectCell (turn) {
+//     if (turn === 0) {
+//         let cellImg = './assets/letterX.jpg'
+//     } else {
+//         cellImg = './assets/letterO.jpg'
+//     }
+// }
+// const turnIdentifier = board.map(selectCell => selectCell % 2)
+
+// selectCell(turnIdentifier)
+
+const element = document.getElementById('game-board')
 function createGameBoard () {
-    gameBoard = []
     for (let i = 0; i < cellLength; i++) {
-        row = []
+        let row = []
         for (let j =0; j < cellLength; j++) {
+            let newElement = document.createElement("button")
+            element.appendChild(newElement)
             row.push(j)
         }
+        let breakElement = document.createElement("br")
+        element.appendChild(breakElement)
         gameBoard.push(row)
     }
 }
 
-createGameBoard()
-console.log(gameBoard.length)
+createGameBoard(gameBoard)
 
+function togglePlayer () {
+    if (currentPlayer === 'X') {
+        currentPlayer = 'O'
+    } else {
+        currentPlayer = 'X'
+    }
+}
+togglePlayer()
 // // board is array of arrays
 // // use pairs to identify the coordinate of each cell
 // const boardCellPair = [[0, 0], [1, 1], [2, 2]]

@@ -5,10 +5,10 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
-const playerMove = require('./events.js')
+const playerMove = require('./events')
 
 $(() => {
-  $('.cell-selector').one('click', playerMove.onSelectCell)
+  $('.cell-selector').on('click', playerMove.onSelectCell)
 })
 
 module.exports = {

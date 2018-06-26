@@ -1,8 +1,7 @@
 
 
-const onSelectSuccess = function (data) {
-    data = whichPlayer(i)
-    console.log('user status: ', data)
+const onSelectSuccess = function () {
+    console.log('user status: ', onSelectCell)
 }
 
 const onError = function () {

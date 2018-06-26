@@ -4,7 +4,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .title {
     text-align: center;
 }
-
+button {
+    width: 100px;
+    height: 100px;
+}
 .game-board {
     border: #000000;
     margin: auto;
