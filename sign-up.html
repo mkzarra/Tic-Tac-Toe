@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Sign up for Tic Tac Toe!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+        <p id='message'></p>
+        <div id='sign-up-form-section'>
+            <h3>Sign up!</h3>
+            <form id='sign-up-form'>
+                <p>Enter your email: </p><input name="credentials[email]" type="text"></br>
+                <p>Enter your password: </p><input name="credentials[password]" type="password"></br>
+                <p>Enter your password again:</p><input name="credentials[password_confirmation]" type="password"></br>
+                <button type="button" id='sign-up-button'> Sign up now! </button>
+            </form>
+        </div>
+
+        <div id='sign-in-form-section'>
+            <h3>Already have an account? Sign in.</h3>
+            <form id='sign-in-form'>
+                <p>Enter your email: </p><input name="credentials[email]" type="text"></br>
+                <p>Enter your password: </p><input name="credentials[password]" type="password"></br>
+                <button type="button" id='sign-in-button'> Sign In! </button>
+            </form>
+        </div>
+    </body>
+</html>

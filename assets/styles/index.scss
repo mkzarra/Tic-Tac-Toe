@@ -4,7 +4,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .title {
     text-align: center;
 }
-button {
+.cell-selector {
+    width: 100px;
+    height: 100px;
+    background: url('../cellNotSelected.jpg')
+}
+.img {
+    width: 100px;
+    height: 100px;
+}
+td {
     width: 100px;
     height: 100px;
 }
