@@ -11,42 +11,108 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
+    <body align="center">
       <h1 class="title">Tic-Tac-Toe!</h1>
       <div id="game-board" class="cell-selector" align="center">
-        <button type="submit" id="player-move"></button>
        <table class="game-board" border="2" align="center" width="75%" height="auto">
         <tr>
-            <td id="cellI"><button type="submit" class="cell-selector"></button></td>
+            <td id="cellI">
+            </td>
             <td id="cellII">
-                <button type="submit" class="cell-selector"></button>
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
             <td id="cellIII">
-                <button type="submit" class="cell-selector"></button>
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
         </tr>
         <tr>
             <td id="cellIV">
-                <button type="submit" class="cell-selector"></button>
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
-            <td img onclick="selectCell(cellI)" id="cellV" src="./assets/cellNotSelected.jpg">
-                <button type="submit" class="cell-selector"></button>
+            <td id="cellV">
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
-            <td img onclick="selectCell(cellI)" id="cellVI" src="./assets/cellNotSelected.jpg">
-                <button type="submit" class="cell-selector"></button>
+            <td id="cellVI">
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
         </tr><tr>
-            <td img onclick="selectCell(cellI)" id="cellVII" src="./assets/cellNotSelected.jpg">
-                <button type="submit" class="cell-selector"></button>
+            <td id="cellVII">
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
-            <td img onclick="selectCell(cellI)" id="cellVIII" src="./assets/cellNotSelected.jpg">
-                <button type="submit" class="cell-selector"></button>
+            <td id="cellVIII">
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
-            <td img onclick="selectCell(cellI)" id="cellIX" src="./assets/cellNotSelected.jpg">
-                <button type="submit" class="cell-selector"></button>
+            <td id="cellIX">
+                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
             </td>
         </tr>
     </table>
     </div>
+
+  <!-- Start Sign-Up Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" id="initiateRegisterButton" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+          <form id="sign-up-form">
+              <fieldset>
+              <div class="modal-body">
+                  <label for="name">Sign Up</label>
+                  <input type="text" class="createUser" name="credentials[email]" id="email" placeholder="Enter Email">
+                  <input type="password" name="credentials[create-password]" id="create-password" placeholder="Create Password">
+                  <input type="password" name="credentials[confirm-password]" id="confirm-password" placeholder="Confirm Password">
+              </div>
+              </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="sign-up-modal" type="button" class="registerModal">Sign Up!</button>
+  <!-- End Modal -->
+
+ <!-- Start Sign-In Modal -->
+ <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sign In</h5>
+              <button type="button" id="initiateSignInButton" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-in-form">
+                  <fieldset>
+                  <div class="modal-body">
+                      <label for="name">Sign In</label>
+                      <input type="text" class="user" name="credentials[authorized-user]" id="authorized-user" placeholder="Enter Email">
+                      <input type="password" name="credentials[enter-password]" id="enter-password" placeholder="Enter Password">
+                  </div>
+                  </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="sign-in-modal" type="button" class="authorizeModal">Sign In!</button>
+      <!-- End Modal -->
+
+      
+
     </body>
 </html>

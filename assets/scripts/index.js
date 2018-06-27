@@ -10,7 +10,7 @@ require('./ui')
 
 const cellLength = 10
 let gameBoard = []
-let currentPlayer = 'X'
+
 
 // function selectCell (turn) {
 //     if (turn === 0) {
@@ -29,13 +29,7 @@ function createGameBoard () {
 
 createGameBoard(gameBoard)
 
-function togglePlayer () {
-    if (currentPlayer === 'X') {
-        currentPlayer = 'O'
-    } else {
-        currentPlayer = 'X'
-    }
-}
+
 // // board is array of arrays
 // // use pairs to identify the coordinate of each cell
 // const boardCellPair = [[0, 0], [1, 1], [2, 2]]
@@ -71,6 +65,5 @@ function togglePlayer () {
 // }
 
 module.exports = {
-    createGameBoard,
-    togglePlayer
+    createGameBoard
 }

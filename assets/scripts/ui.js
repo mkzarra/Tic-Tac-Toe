@@ -30,6 +30,18 @@ const onSignInFailure = function (error) {
     console.log('signInFailure ran. Data is :', error)
 }
 
+const onCreateGameSuccess = function (data) {
+    $('#message').text('Success!')
+    $('#message').css('background-color', 'green')
+    console.log('onCreateGameSuccess ran. Data is :', data)
+}
+
+const onCreateGameFailure = function (error) {
+    $('#message').text('Error creating new game')
+    $('#message').css('background-color', 'red')
+    console.log('onCreateGameFailure ran. Data is :', error)
+}
+
 const onGetGameSuccess = function (data) {
     $('#message').text('Success!')
     $('#message').css('background-color', 'green')
@@ -55,6 +67,8 @@ module.exports = {
     onSignUpFailure,
     onSignInSuccess,
     onSignInFailure,
+    onCreateGameSuccess,
+    onCreateGameFailure,
     onGetGameSuccess,
     onGetGameFailure,
     onSelectSuccess,

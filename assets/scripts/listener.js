@@ -8,11 +8,19 @@
 const eventHandler = require('./events')
 
 $(() => {
-
-  $('#sign-up-button').on('click', eventHandler.onSignUp)
-  $('#sign-in-button').on('click', eventHandler.onSignIn)
-  $('#sign-in-button').submit(eventHandler.onGameLoad)
-  $('.cell-selector').on('click', eventHandler.onSelectCell)
+  $('#signUpModal').on('click', eventHandler.onEngageSignUpButton)
+  $('#signInModal').on('click', eventHandler.onEngageSignInButton)
+  $('#sign-up-button').on('submit', eventHandler.onSignUp)
+  $('#sign-in-button').on('submit', eventHandler.onSignIn)
+  $("#cellI").click(eventHandler.onSelectCell)
+  $("#cellII").click(eventHandler.onSelectCell)
+  $("#cellIII").click(eventHandler.onSelectCell)
+  $("#cellIV").click(eventHandler.onSelectCell)
+  $("#cellV").click(eventHandler.onSelectCell)
+  $("#cellVI").click(eventHandler.onSelectCell)
+  $("#cellVII").click(eventHandler.onSelectCell)
+  $("#cellVIII").click(eventHandler.onSelectCell)
+  $("#cellIX").click(eventHandler.onSelectCell)
 })
 
 module.exports = {
