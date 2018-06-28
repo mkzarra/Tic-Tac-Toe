@@ -20,8 +20,7 @@ const onSignInSuccess = function (data) {
     $('#message').css('background-color', 'green')
     console.log('signedInSuccess ran. Data is :', data)
     store.user = data.user
-    $('#sign-up-form-section').hide()
-    $('#sign-in-form-section').hide()
+    $('#signInModul').modal('hide')
 }
 
 const onSignInFailure = function (error) {

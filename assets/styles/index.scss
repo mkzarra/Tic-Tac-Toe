@@ -5,19 +5,26 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     text-align: center;
 }
 .cell-selector {
-    width: 100px;
-    height: 100px;
-    background: url('../cellNotSelected.jpg')
+   margin: auto;
 }
 .img {
     width: 100px;
     height: 100px;
 }
 td {
-    width: 100px;
-    height: 100px;
+    font-size: 5em;
+    text-align: center;
+    width: 1em;
+    height: 2em;
 }
 .game-board {
     border: #000000;
-    margin: auto;
+    margin:auto;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 3%;
 }

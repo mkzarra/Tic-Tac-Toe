@@ -13,37 +13,30 @@
     </head>
     <body align="center">
       <h1 class="title">Tic-Tac-Toe!</h1>
+      <button type="click" id="create-game-button" >Create New Game</button>
       <div id="game-board" class="cell-selector" align="center">
        <table class="game-board" border="2" align="center" width="75%" height="auto">
         <tr>
-            <td id="cellI">
+            <td id="0cell" class="game-square">
             </td>
-            <td id="cellII">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="1cell" class="game-square">
             </td>
-            <td id="cellIII">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="2cell" class="game-square">
             </td>
         </tr>
         <tr>
-            <td id="cellIV">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="3cell" class="game-square">
             </td>
-            <td id="cellV">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="4cell" class="game-square">
             </td>
-            <td id="cellVI">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="5cell" class="game-square">
             </td>
         </tr><tr>
-            <td id="cellVII">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="6cell" class="game-square">
             </td>
-            <td id="cellVIII">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="7cell" class="game-square">
             </td>
-            <td id="cellIX">
-                <!-- <button type="submit" name="cellSelector" class="cell-selector"></button> -->
+            <td id="8cell" class="game-square">
             </td>
         </tr>
     </table>
@@ -65,15 +58,15 @@
               <div class="modal-body">
                   <label for="name">Sign Up</label>
                   <input type="text" class="createUser" name="credentials[email]" id="email" placeholder="Enter Email">
-                  <input type="password" name="credentials[create-password]" id="create-password" placeholder="Create Password">
-                  <input type="password" name="credentials[confirm-password]" id="confirm-password" placeholder="Confirm Password">
+                  <input type="password" name="credentials[password]" id="create-password" placeholder="Create Password">
+                  <input type="password" name="credentials[password_confirmation]" id="confirm-password" placeholder="Confirm Password">
               </div>
               </fieldset>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="sign-up-button" class="btn btn-primary">Save</button>
+              </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
@@ -96,21 +89,38 @@
                   <fieldset>
                   <div class="modal-body">
                       <label for="name">Sign In</label>
-                      <input type="text" class="user" name="credentials[authorized-user]" id="authorized-user" placeholder="Enter Email">
-                      <input type="password" name="credentials[enter-password]" id="enter-password" placeholder="Enter Password">
+                      <input type="text" class="user" name="credentials[email]" id="authorized-user" placeholder="Enter Email">
+                      <input type="password" name="credentials[password]" id="enter-password" placeholder="Enter Password">
                   </div>
                   </fieldset>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sign-in-button" class="btn btn-primary">Save</button>
+                  </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save</button>
             </div>
           </div>
         </div>
       </div>
       <button id="sign-in-modal" type="button" class="authorizeModal">Sign In!</button>
       <!-- End Modal -->
+
+      <!-- Start Sign-In Modal -->
+ <div class="modal fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <button type="button" id="closeWinningModal" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      <div class="modal-body">
+            <div class="modal-body">
+                <p id="winningText"></p>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
 
       
 

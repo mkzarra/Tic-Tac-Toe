@@ -34,28 +34,32 @@ const findGame = function (game_id) {
     })
 }
 
-const createGame = function () {
+const createNewGame = function () {
     return $.ajax({
-        url: config.apiUrl + `/games`,
-        method: 'POST'
+        url: config.apiUrl + `games`,
+        method: 'POST',
+        headers: {
+            'Authorization': `Token token=` + store.user.token
+        }
     })
 }
 
 const move = function (game_id) {
     return $.ajax({
+        headers: {
+            'Authorization': `Token token=` + store.user.token
+        },
         url: config.apiUrl + `/games/` + game_id,
         method: 'PATCH',
-        headers: 'Token token=' + store.user.token,
         data
-
     })
 }
 
 module.exports = {
     signUp,
     signIn,
+    createNewGame,
     getUserGames,
     findGame,
-    createGame,
     move
 }
