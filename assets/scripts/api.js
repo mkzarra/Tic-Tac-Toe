@@ -3,7 +3,7 @@ const store = require('./store')
 
 const signUp = function (data) {
     return $.ajax({
-        url: config.apiUrl + `sign-up`,
+        url: config.apiUrl + `/sign-up`,
         method: 'POST',
         data
     })
@@ -11,7 +11,7 @@ const signUp = function (data) {
 
 const signIn = function (data) {
     return $.ajax({
-        url: config.apiUrl + `sign-in`,
+        url: config.apiUrl + `/sign-in`,
         method: 'POST',
         data
     })
@@ -19,7 +19,7 @@ const signIn = function (data) {
 
 const getUserGames = function () {
     return $.ajax({
-        url: config.apiUrl + `/games[?over=]`,
+        url: config.apiUrl + `/games/`,
         method: 'GET',
         headers: {
             Authorization: 'Token token=' + store.user.token
@@ -36,7 +36,7 @@ const findGame = function (game_id) {
 
 const createNewGame = function () {
     return $.ajax({
-        url: config.apiUrl + `games`,
+        url: config.apiUrl + `/games/`,
         method: 'POST',
         headers: {
             'Authorization': `Token token=` + store.user.token
