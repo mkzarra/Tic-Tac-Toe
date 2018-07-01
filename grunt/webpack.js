@@ -6,7 +6,7 @@ const path = require('path')
 module.exports = {
   options: {
     entry: {
-      application: './index.js',
+      application: './assets/scripts/index.js',
       specs: './spec/_all.js',
       vendor: ['jquery', 'bootstrap-sass']
     },

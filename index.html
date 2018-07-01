@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -11,23 +11,118 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-      <h1>Tic-Tac-Toe!</h1>
-      <table class="game-board">
+    <body align="center">
+      <h1 class="title">Tic-Tac-Toe!</h1>
+      <button type="click" id="create-game-button" >Create New Game</button>
+      <div id="game-board" class="cell-selector" align="center">
+       <table class="game-board" border="2" align="center" width="75%" height="auto">
         <tr>
-            <td id="cellI" ></td>
-            <td id="cellII"></td>
-            <td id="cellIII"></td>
+            <td id="0cell" class="game-square">
+            </td>
+            <td id="1cell" class="game-square">
+            </td>
+            <td id="2cell" class="game-square">
+            </td>
         </tr>
         <tr>
-            <td id="cellIV"></td>
-            <td id="cellV"></td>
-            <td id="cellVI"></td>
+            <td id="3cell" class="game-square">
+            </td>
+            <td id="4cell" class="game-square">
+            </td>
+            <td id="5cell" class="game-square">
+            </td>
         </tr><tr>
-            <td id="cellVII"></td>
-            <td id="cellVIII"></td>
-            <td id="cellIX"></td>
+            <td id="6cell" class="game-square">
+            </td>
+            <td id="7cell" class="game-square">
+            </td>
+            <td id="8cell" class="game-square">
+            </td>
         </tr>
     </table>
+    </div>
+
+  <!-- Start Sign-Up Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" id="initiateRegisterButton" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+          <form id="sign-up-form">
+              <fieldset>
+              <div class="modal-body">
+                  <label for="name">Sign Up</label>
+                  <input type="text" class="createUser" name="credentials[email]" id="email" placeholder="Enter Email">
+                  <input type="password" name="credentials[password]" id="create-password" placeholder="Create Password">
+                  <input type="password" name="credentials[password_confirmation]" id="confirm-password" placeholder="Confirm Password">
+              </div>
+              </fieldset>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="sign-up-button" class="btn btn-primary">Save</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="sign-up-modal" type="button" class="registerModal">Sign Up!</button>
+  <!-- End Modal -->
+
+ <!-- Start Sign-In Modal -->
+ <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sign In</h5>
+              <button type="button" id="initiateSignInButton" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-in-form">
+                  <fieldset>
+                  <div class="modal-body">
+                      <label for="name">Sign In</label>
+                      <input type="text" class="user" name="credentials[email]" id="authorized-user" placeholder="Enter Email">
+                      <input type="password" name="credentials[password]" id="enter-password" placeholder="Enter Password">
+                  </div>
+                  </fieldset>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="sign-in-button" class="btn btn-primary">Save</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="sign-in-modal" type="button" class="authorizeModal">Sign In!</button>
+      <!-- End Modal -->
+
+      <!-- Start Sign-In Modal -->
+ <div class="modal fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <button type="button" id="closeWinningModal" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      <div class="modal-body">
+            <div class="modal-body">
+                <p id="winningText"></p>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
+      
+
     </body>
 </html>
