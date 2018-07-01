@@ -72,6 +72,7 @@ function togglePlayer () {
 
 const onSelectCell = function(event) {
     console.log(store.user)
+    const data = getFormFields(event.target)
     if (store.user === undefined || gameOver === true) {
         return
     }
