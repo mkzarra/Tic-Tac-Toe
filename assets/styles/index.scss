@@ -1,6 +1,12 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.doge {
+    background-image: url("https://i.imgur.com/yIn6Zuk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .title {
     text-align: center;
 }
@@ -12,6 +18,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     height: 100px;
 }
 td {
+    color: #ff00b3;
     font-size: 5em;
     text-align: center;
     width: 1em;
