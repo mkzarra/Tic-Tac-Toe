@@ -44,7 +44,7 @@ const createNewGame = function () {
     })
 }
 
-const move = function (game_id) {
+const move = function (game_id, data) {
     return $.ajax({
         headers: {
             'Authorization': `Token token=` + store.user.token
