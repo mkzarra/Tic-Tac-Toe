@@ -99,11 +99,11 @@ const onSelectCell = function(event) {
         }
     }
 
-    wins.forEach(function(winList) {
+    const over = wins.forEach(function(winList) {
         let count = 0;
         currentPositions.forEach(function(position) {
             if (winList.includes(position)) { 
-                count++;
+                count++
             }
         })
         if (count === 3) {
@@ -115,7 +115,7 @@ const onSelectCell = function(event) {
             $('#winningModal').modal('show')
         }
     })
-     gameApi.move(data)
+     gameApi.move(data, over)
         .then(gameUi.onSelectSuccess)
         .catch(gameUi.onError)
 }

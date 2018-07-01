@@ -44,14 +44,15 @@ const createNewGame = function () {
     })
 }
 
-const move = function (game_id, data) {
+const move = function (game_id, data, over) {
     return $.ajax({
         headers: {
             'Authorization': `Token token=` + store.user.token
         },
         url: config.apiUrl + `/games` + game_id,
         method: 'PATCH',
-        data
+        data,
+        over
     })
 }
 
