@@ -1,2 +1,36 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+.doge {
+    background-image: url("https://i.imgur.com/yIn6Zuk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title {
+    text-align: center;
+}
+.cell-selector {
+   margin: auto;
+}
+.img {
+    width: 100px;
+    height: 100px;
+}
+td {
+    color: #ff00b3;
+    font-size: 5em;
+    text-align: center;
+    width: 1em;
+    height: 2em;
+}
+.game-board {
+    border: #000000;
+    margin:auto;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 3%;
+}
