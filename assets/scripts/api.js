@@ -49,7 +49,7 @@ const move = function (game_id, data) {
         headers: {
             'Authorization': `Token token=` + store.user.token
         },
-        url: config.apiUrl + `/games/` + game_id,
+        url: config.apiUrl + `/games` + game_id,
         method: 'PATCH',
         data
     })
