@@ -6,12 +6,10 @@ const store = require('./store')
 let currentPlayer = 'O'
 let wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 // let count = 0
-let gameBoard = new Array(cellLength)
 let cellLength = 9
 let gameOver = false
-let gameId
-
-
+// let boardInPlay = []
+1
 const onEngageSignUpButton = function (event) {
     event.preventDefault()
     $('#signUpModal').modal('show')
@@ -40,27 +38,32 @@ const onSignIn = function(event) {
     $('#signInModal').modal('hide')
 }
 
-const onCreateNewGame = function(event) {
-    console.log("here")
+const onGetUserGames = function(){
+    gameApi.getUserGames().
+    then(gameUi.onGetGameSuccess)
+    .catch(gameUi.onGetGameFailure)
+}
+
+const onCreateNewGame = function() {
     if (store.user === undefined) {
         $('#signInModal').modal('show')
-    }
-    console.log("token: " + store.user.token)
-    event.preventDefault()
-    gameApi.createNewGame()
-    .then(gameUi.onCreateGameSuccess)
-    .catch(gameUi.onCreateGameFailure)
+    } else {
+        // TODO: clear UI
+        gameApi.createGame()
+            .then(gameUi.onCreateGameSuccess)
+            .catch(gameUi.onCreateGameFailure) 
+    }   
 }
 
 const onGameLoad = function(event) {
     event.preventDefault()
     console.log("here")
-    gameApi.createGame()
+    gameApi.findGame()
         .then(gameUi.onGetGameSuccess)
         .catch(gameUi.onGetGameFailure)
 }
 
-function togglePlayer () {
+function togglePlayer() {
     if (currentPlayer === 'X') {
         currentPlayer = 'O'
     } else {
@@ -68,20 +71,21 @@ function togglePlayer () {
     }
 }
 
-
-
 const onSelectCell = function(event) {
-    console.log(store.user)
-    const data = getFormFields(event.target)
-    if (store.user === undefined || gameOver === true) {
+    console.log(store)
+    if (store.user === undefined || store.game === undefined || 
+        store.game.over === true) {
+            console.log("you can't make a move.")
         return
     }
     // TODO store move data
     let element = $(this).html()
     let td = event.target
-    console.log(td.id)
     let index = parseInt(td.id)
-    console.log(index)
+    let gameBoard = store.game.cells
+    // boardInPlay.push(index)
+    // console.log(boardInPlay)
+    // console.log(index)
     if (element === 'X' || element === 'O') {
         return false
     } else {
@@ -91,7 +95,6 @@ const onSelectCell = function(event) {
     }
 
     // TODO patch moves to server
-
     let currentPositions = []
     for (let i = 0; i < cellLength; i++) {
         if (gameBoard[i] === currentPlayer) {
@@ -99,7 +102,33 @@ const onSelectCell = function(event) {
         }
     }
 
-    const over = wins.forEach(function(winList) {
+    let over = checkForWin(currentPositions, wins)
+    // wins.forEach(function(winList) {
+    //     let count = 0;
+    //     currentPositions.forEach(function(position) {
+    //         if (winList.includes(position)) { 
+    //             count++
+    //         }
+    //     })
+    //     if (count === 3) {
+    //         $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
+    //         $('#winningModal').modal('show')
+    //         gameOver = true
+    //     } else if (currentPositions.length === cellLength) {
+    //         $('#winningText').text("Tie Game")
+    //         $('#winningModal').modal('show')
+    //         gameOver = true
+    //     } 
+    // })
+
+    gameApi.move(index, currentPlayer, over)
+        .then(gameUi.onSelectSuccess)
+        .catch(gameUi.onSelectFailure)
+}
+
+function checkForWin(currentPositions, wins) {
+    let winner = false
+    wins.some(function(winList) {
         let count = 0;
         currentPositions.forEach(function(position) {
             if (winList.includes(position)) { 
@@ -109,15 +138,14 @@ const onSelectCell = function(event) {
         if (count === 3) {
             $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
             $('#winningModal').modal('show')
-            gameOver = true
-        } else if (gameBoard.length === cellLength) {
+            winner = true
+        } else if (currentPositions.length === cellLength) {
             $('#winningText').text("Tie Game")
             $('#winningModal').modal('show')
-        }
+            winner = true
+        } 
     })
-     gameApi.move(data, over)
-        .then(gameUi.onSelectSuccess)
-        .catch(gameUi.onError)
+    return winner
 }
 
 // ui.js
@@ -134,6 +162,7 @@ module.exports = {
     onEngageSignInButton,
     onSignUp,
     onSignIn,
+    onGetUserGames,
     onCreateNewGame,
     onGameLoad,
     onSelectCell,

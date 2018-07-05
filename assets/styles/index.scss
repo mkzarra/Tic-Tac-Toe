@@ -17,7 +17,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     width: 100px;
     height: 100px;
 }
-td {
+#create-game-button {
+    margin: auto;
+}
+#load-game-button {
+    margin: auto;
+}
+.game-list-column {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    padding: .5em;
+}
+.game-square {
     color: #ff00b3;
     font-size: 5em;
     text-align: center;

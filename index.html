@@ -13,8 +13,26 @@
     </head>
     <body align="center">
       <h1 class="title">Tic-Tac-Toe!</h1>
-      <button type="click" id="create-game-button" >Create New Game</button>
-      <div id="game-board" class="cell-selector" align="center">
+      <button type="click" id="create-game-button" align="center" style="display: none;">Create New Game</button>
+      <button type="click" id="load-game-button" align="center" style="display: none;">Load Previous Games</button>
+      <!-- list of user games, hidden by default-->
+      <div id="game-list" align="center" style="display: none;">
+        <table id="game-table">
+          <tr>
+            <td class='game-list-column'>
+              Game id
+            </td> 
+            <td class='game-list-column'>
+              Opponent
+            </td>
+            <td class='game-list-column'>
+              Game Status
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+      <div id="game-board" class="cell-selector" align="center" style="display: none;">
        <table class="game-board" border="2" align="center" width="75%" height="auto">
         <tr>
             <td id="0cell" class="game-square">
@@ -105,11 +123,19 @@
       <button id="sign-in-modal" type="button" class="authorizeModal">Sign In!</button>
       <!-- End Modal -->
 
-      <!-- Start Sign-In Modal -->
- <div class="modal fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- Start Winning Modal -->
+
+<div class="modal fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <p id="winningText"></p>
+    </div>
+  </div>
+</div>
+ <!-- <div class="modal-fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <button type="button" id="closeWinningModal" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id="closeWinningModal" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
       <div class="modal-body">
@@ -119,7 +145,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- End Modal -->
 
       

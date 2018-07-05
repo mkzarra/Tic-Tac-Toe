@@ -8,7 +8,7 @@
 require('./listener')
 require('./ui')
 
-const cellLength = 10
+const cellLength = 9
 let gameBoard = []
 
 function createGameBoard () {
