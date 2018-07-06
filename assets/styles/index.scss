@@ -1,11 +1,12 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import './sass-variable.scss';
 
 .doge {
     background-image: url("https://i.imgur.com/yIn6Zuk.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
+}  
 
 .title {
     text-align: center;
@@ -13,37 +14,31 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .cell-selector {
    margin: auto;
 }
-.img {
-    width: 100px;
-    height: 100px;
-}
-#create-game-button {
+
+
+.userActionModal {
     margin: auto;
+    display: -webkit-inline-box;
 }
-#load-game-button {
-    margin: auto;
-}
+
 .game-list-column {
-    color: black;
+    color: $color-black;
     font-size: 2em;
     text-align: center;
     padding: .5em;
 }
 .game-square {
     color: #ff00b3;
+    background-color: -webkit shade($color-black, 20%);
     font-size: 5em;
     text-align: center;
     width: 1em;
     height: 2em;
 }
 .game-board {
-    border: #000000;
+    border: $color-black;
     margin:auto;
 }
 
-button {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    margin: 3%;
-}
+
+

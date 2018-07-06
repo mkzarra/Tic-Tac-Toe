@@ -20,6 +20,7 @@ const onSignInSuccess = function (data) {
     $('#message').css('background-color', 'green')
     console.log('signedInSuccess ran. Data is :', data)
     $('#create-game-button').css('display', 'block')
+    $('#sign-out-modal').css('display', 'block')
     $('#load-game-button').css('display', 'block')
     $('#sign-up-modal').css('display', 'none')
     $('#sign-in-modal').css('display', 'none')
@@ -33,6 +34,21 @@ const onSignInFailure = function (error) {
     console.log('signInFailure ran. Data is :', error)
 }
 
+const signOutSuccess = function () {
+    store.user = null
+    $('#create-game-button').css('display', 'none')
+    $('#load-game-button').css('display', 'none')
+    $('#sign-out-modal').css('display', 'none')
+    $('#sign-up-modal').css('display', 'block')
+    $('#sign-in-modal').css('display', 'block')
+    $('#game-board').css('display', 'none')
+}
+
+const signOutFailure = function (error) {
+    $('#message').text('Error on sign out')
+    $('#message').css('background-color', 'red')
+    console.log('signOutFailure ran. Error is :', error)
+}
 const onGetGameSuccess = function(data) {
     console.log('onGetGameSuccess ran. Data is :', data)
     $('#game-list').css('display', 'block')
@@ -103,6 +119,8 @@ module.exports = {
     onSignUpFailure,
     onSignInSuccess,
     onSignInFailure,
+    signOutSuccess,
+    signOutFailure,
     onCreateGameSuccess,
     onCreateGameFailure,
     onGetGameSuccess,

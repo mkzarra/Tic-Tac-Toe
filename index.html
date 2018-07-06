@@ -11,10 +11,10 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body align="center">
+    <body class="doge" align="center">
       <h1 class="title">Tic-Tac-Toe!</h1>
-      <button type="click" id="create-game-button" align="center" style="display: none;">Create New Game</button>
-      <button type="click" id="load-game-button" align="center" style="display: none;">Load Previous Games</button>
+      <button type="click" id="create-game-button" class="userActionModal" align="center" style="display: none;">Create New Game</button>
+      <button type="click" id="load-game-button" class="userActionModal" align="center" style="display: none;">Load Previous Games</button>
       <!-- list of user games, hidden by default-->
       <div id="game-list" align="center" style="display: none;">
         <table id="game-table">
@@ -89,7 +89,7 @@
       </div>
     </div>
   </div>
-  <button id="sign-up-modal" type="button" class="registerModal">Sign Up!</button>
+  <button id="sign-up-modal" type="button" class="userActionModal" align="center">Sign Up!</button>
   <!-- End Modal -->
 
  <!-- Start Sign-In Modal -->
@@ -120,28 +120,59 @@
           </div>
         </div>
       </div>
-      <button id="sign-in-modal" type="button" class="authorizeModal">Sign In!</button>
+      <button id="sign-in-modal" type="button" class="userActionModal" align="center">Sign In!</button>
       <!-- End Modal -->
+
+      <!-- Start Sign-Out Modal -->
+ <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Signed Out</h5>
+        <button type="button" id="initiateSignOutButton" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+      <div class="modal-body">
+        <p id="sign-out-text">Thanks for playing!</p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>        
+      </div>
+    </div>
+  </div>
+</div>
+<button id="sign-out-modal" type="button" class="userActionModal" align="center" style="display: none;">Sign Out</button>
+<!-- End Modal -->
 
       <!-- Start Winning Modal -->
 
 <div class="modal fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Game Over</h5>
       <p id="winningText"></p>
+      </div>
     </div>
   </div>
 </div>
  <!-- <div class="modal-fade" id="winningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Game Over</h5>
         <button type="button" id="closeWinningModal" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+        </div>
       <div class="modal-body">
             <div class="modal-body">
                 <p id="winningText"></p>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>  
       </div>
     </div>
   </div>

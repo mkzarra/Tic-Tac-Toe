@@ -5,10 +5,7 @@ const store = require('./store')
 
 let currentPlayer = 'O'
 let wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-// let count = 0
 let cellLength = 9
-let gameOver = false
-// let boardInPlay = []
 1
 const onEngageSignUpButton = function (event) {
     event.preventDefault()
@@ -38,6 +35,14 @@ const onSignIn = function(event) {
     $('#signInModal').modal('hide')
 }
 
+const onSignOut = function(event) {
+    event.preventDefault()
+    $('#signOutModal').modal('show')
+    gameApi.signOut()
+    .then(gameUi.signOutSuccess)
+    .catch(gameUi.signOutFailure)
+}
+
 const onGetUserGames = function(){
     gameApi.getUserGames().
     then(gameUi.onGetGameSuccess)
@@ -48,7 +53,7 @@ const onCreateNewGame = function() {
     if (store.user === undefined) {
         $('#signInModal').modal('show')
     } else {
-        // TODO: clear UI
+        currentPlayer = 'O'
         gameApi.createGame()
             .then(gameUi.onCreateGameSuccess)
             .catch(gameUi.onCreateGameFailure) 
@@ -99,6 +104,8 @@ const onSelectCell = function(event) {
     for (let i = 0; i < cellLength; i++) {
         if (gameBoard[i] === currentPlayer) {
             currentPositions.push(i)
+            console.log(currentPositions)
+            console.log(currentPositions.length)
         }
     }
 
@@ -139,7 +146,7 @@ function checkForWin(currentPositions, wins) {
             $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
             $('#winningModal').modal('show')
             winner = true
-        } else if (currentPositions.length === cellLength) {
+        } else if (currentPositions.length === 5) {
             $('#winningText').text("Tie Game")
             $('#winningModal').modal('show')
             winner = true
@@ -162,6 +169,7 @@ module.exports = {
     onEngageSignInButton,
     onSignUp,
     onSignIn,
+    onSignOut,
     onGetUserGames,
     onCreateNewGame,
     onGameLoad,

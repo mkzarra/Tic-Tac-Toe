@@ -17,6 +17,25 @@ const signIn = function (data) {
     })
 }
 
+const changePassword = function (data) {
+    return $.ajax({
+        url: config.apiUrl + 'change-password',
+        method: 'PATCH',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        },
+        data
+    })
+}
+const signOut = function () {
+    return $.ajax({
+        url: config.apiUrl + 'sign-out',
+        method: 'DELETE',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        }
+    })
+}
 const getUserGames = function () {
     return $.ajax({
         url: config.apiUrl + `games/`,
@@ -68,6 +87,8 @@ const move = function (index, currentPlayer, over) {
 module.exports = {
     signUp,
     signIn,
+    changePassword,
+    signOut,
     createGame,
     getUserGames,
     findGame,
