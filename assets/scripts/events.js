@@ -77,10 +77,10 @@ const onCreateNewGame = function() {
     }   
 }
 
-const onShowGame = function(event, game) {
+const onShowGame = function(event) {
     event.preventDefault()
-    console.log(game)
-    gameApi.showGame(game)
+    console.log(event)
+    gameApi.showGame(game.id)
         .then(gameUi.onShowGameSuccess)
         .catch(gameUi.onShowGameFailure)
 }

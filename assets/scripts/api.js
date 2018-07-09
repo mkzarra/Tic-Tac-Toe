@@ -48,17 +48,16 @@ const getUserGames = function() {
     })
 }
 
-const showGame = function(game, data) {
+const showGame = function(game) {
     console.log(game.id)
     console.log(data)
     console.log(game)
     return $.ajax({
-        url: config.apiUrl + `games/` + game.id,
+        url: config.apiUrl + `games/` + store.game.id,
         method: 'GET',
         headers: {
             Authorization: 'Token token=' + store.user.token
-        },
-        data
+        }
     })
 }
 

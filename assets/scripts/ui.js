@@ -18,13 +18,14 @@ const onSignUpFailure = function(error) {
 
 const onSignInSuccess = function(data) {
     console.log('signedInSuccess ran. Data is :', data)
-    $('#create-game-button').css('display', 'block')
+    $('#message').text('Welcome!')
+    $('#message').css('background-color', 'khaki')
+    $('#create-game-button').css('display', 'inline-block')
     $('#sign-out-modal').css('display', 'inline-block')
     $('#load-game-button').css('display', 'inline-block')
     $('#change-password-modal').css('display', 'inline-block')
     $('#sign-up-modal').css('display', 'none')
     $('#sign-in-modal').css('display', 'none')
-    // clear form fields
     clearFormFields('#sign-in-form')
     store.user = data.user
     $('#signInModul').modal('hide')
@@ -44,6 +45,7 @@ const onSignInFailure = function(error) {
 
 const signOutSuccess = function() {
     store.user = null
+    $('#game-list').css('display', 'none')
     $('#create-game-button').css('display', 'none')
     $('#load-game-button').css('display', 'none')
     $('#sign-out-modal').css('display', 'none')
@@ -76,7 +78,7 @@ const onChangePasswordFailure = function(error) {
 
 const onGetGameSuccess = function(data) {
     console.log('onGetGameSuccess ran. Data is :', data)
-    $('#game-list').css('display', 'block')
+    $('#game-list').css('display', 'inline-block')
     $('#game-board').css('display', 'none')
     let userEmail = store.user.email
     let games = data.games
@@ -99,14 +101,14 @@ const onGetGameSuccess = function(data) {
             td3.appendChild(document.createTextNode("Active Game"))
 
         }
+        let td4 = document.createElement("td")
+        let positions = game.cells
+        td4.appendChild(document.createTextNode(positions))
         let tr = document.createElement("tr")
-        let btn = document.createElement("button")
-        btn.setAttribute('class', 'show-game-button')
-        btn.setAttribute('type', 'button')
         tr.append(td1)
         tr.append(td2)
         tr.append(td3)
-        tr.append(btn)
+        tr.append(td4)
         $("#game-table").append(tr)
     })
 }

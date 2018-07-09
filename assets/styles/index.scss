@@ -17,15 +17,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     margin: auto;
 }
 
+.game-id-list {
+    color: #00ff88;
+    font-family: 'Fredoka One', cursive;
+}
+
 .game-list-column {
-    color: $color-black;
+    color: #ff00b3;
     font-size: 2em;
     text-align: center;
     padding: .5em;
-}
-
-.game-id-list {
-    counter-reset: #0000ff;
     font-family: 'Fredoka One', cursive;
 }
 
