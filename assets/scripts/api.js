@@ -51,6 +51,7 @@ const getUserGames = function() {
 const showGame = function(game, data) {
     console.log(game.id)
     console.log(data)
+    console.log(game)
     return $.ajax({
         url: config.apiUrl + `games/` + game.id,
         method: 'GET',

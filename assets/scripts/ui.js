@@ -4,7 +4,7 @@ const store = require('./store')
 
 const onSignUpSuccess = function(data) {
     $('#message').text('Signed up successfully')
-    $('#message').css('background-color', 'green')
+    $('#message').css('background-color', 'khaki')
     console.log('signUpSuccess ran. Data is :', data)
     $('#sign-up-form-section').hide()
     clearFormFields('#sign-up-form')
@@ -17,8 +17,6 @@ const onSignUpFailure = function(error) {
 }
 
 const onSignInSuccess = function(data) {
-    $('#message').text('Signed in successfully')
-    $('#message').css('background-color', 'green')
     console.log('signedInSuccess ran. Data is :', data)
     $('#create-game-button').css('display', 'block')
     $('#sign-out-modal').css('display', 'inline-block')
@@ -52,6 +50,7 @@ const signOutSuccess = function() {
     $('#sign-up-modal').css('display', 'inline-block')
     $('#sign-in-modal').css('display', 'inline-block')
     $('#game-board').css('display', 'none')
+    $('#message').hide()
     $('#change-password-modal').css('display', 'none')
 }
 
@@ -63,7 +62,7 @@ const signOutFailure = function(error) {
 
 const onChangePasswordSuccess = function(data) {  
     $('#message').text('Changed password successfully')
-    $('#message').css('background-color', 'green')
+    $('#message').css('background-color', 'khaki')
     console.log('onChangePasswordSuccess ran. Data is :', data)
     $('#change-password-form-section').hide()  
     clearFormFields('#change-password-form')
@@ -83,7 +82,6 @@ const onGetGameSuccess = function(data) {
     let games = data.games
     games.forEach(function(game) {
         let td1 = document.createElement("td")
-        td1.setAttribute('class', 'game-id-list')
         td1.appendChild(document.createTextNode(game.id))
         let td2 = document.createElement("td")
         let opponent
@@ -102,9 +100,13 @@ const onGetGameSuccess = function(data) {
 
         }
         let tr = document.createElement("tr")
+        let btn = document.createElement("button")
+        btn.setAttribute('class', 'show-game-button')
+        btn.setAttribute('type', 'button')
         tr.append(td1)
         tr.append(td2)
         tr.append(td3)
+        tr.append(btn)
         $("#game-table").append(tr)
     })
 }
@@ -116,12 +118,19 @@ const onGetGameFailure = function(error){
 }
 
 const onShowGameSuccess = function(data) {
-    store.game.id = data.game.id
+    store.game.id = data.game.id 
+    $('#game-list').css('display', 'none')
+    $('#game-board').css("display", "block")
 }
 
+const onShowGameFailure = function(error){
+    $('#message').text('Unable to fetch game.')
+    $('#message').css('color', 'red')
+    console.error(error)
+}
 const onCreateGameSuccess = function(data) {
     $('#message').text('X\'s turn')
-    $('#message').css('background-color', 'green')
+    $('#message').css('background-color', 'khaki')
     $('.game-square').text('')
     console.log('onCreateGameSuccess ran. Data is :', data)
     $('#game-list').css('display', 'none')
@@ -159,6 +168,7 @@ module.exports = {
     onGetGameSuccess,
     onGetGameFailure,
     onShowGameSuccess,
+    onShowGameFailure,
     onSelectSuccess,
     onSelectFailure
 }

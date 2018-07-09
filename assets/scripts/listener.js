@@ -16,7 +16,7 @@ $(() => {
   $('#sign-out-modal').on('click', eventHandler.onSignOut)
   $('#create-game-button').on('click', eventHandler.onCreateNewGame)
   $('#load-game-button').on('click', eventHandler.onGetUserGames)
-  $('.game-id-list').click(eventHandler.onShowGame)
+  $('.show-game-button').on('click', eventHandler.onShowGame)
   $('#closeWinningModal').on('click')
   $("#0cell").click(eventHandler.onSelectCell)
   $("#1cell").click(eventHandler.onSelectCell)

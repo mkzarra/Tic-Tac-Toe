@@ -69,6 +69,7 @@ const onCreateNewGame = function() {
     if (store.user === undefined) {
         $('#signInModal').modal('show')
     } else {
+        $('#message').show()
         currentPlayer = 'O'
         gameApi.createGame()
             .then(gameUi.onCreateGameSuccess)
@@ -78,14 +79,14 @@ const onCreateNewGame = function() {
 
 const onShowGame = function(event, game) {
     event.preventDefault()
-    console.log("here")
-    gameApi.showGame(game.id)
+    console.log(game)
+    gameApi.showGame(game)
         .then(gameUi.onShowGameSuccess)
         .catch(gameUi.onShowGameFailure)
 }
 
 function togglePlayer() {
-    if (currentPlayer === 'X') {
+   if (currentPlayer === 'X') {
         currentPlayer = 'O'
         $('#message').text('X\'s turn')
   } else {
@@ -146,9 +147,9 @@ function checkForWin(currentPositions, wins) {
             }
         })
         if (count === 3) {
-            $('#message').text("Congrats! " + currentPlayer + " is the winner!") 
             $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
             $('#winningModal').modal('show')
+            $('#message').hide()
             winner = true
         } else if (currentPositions.length === 5) {
             $('#winningText').text("Tie Game")
