@@ -1,24 +1,20 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-@import './sass-variable.scss';
+@import './sass-variable.scss'; 
+
+.cell-selector {
+   margin: auto;
+}
 
 .doge {
     background-image: url("https://i.imgur.com/yIn6Zuk.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}  
+} 
 
-.title {
-    text-align: center;
-}
-.cell-selector {
-   margin: auto;
-}
-
-
-.userActionModal {
+.game-board {
+    border: $color-black;
     margin: auto;
-    display: -webkit-inline-box;
 }
 
 .game-list-column {
@@ -27,6 +23,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     text-align: center;
     padding: .5em;
 }
+
+.game-id-list {
+    counter-reset: #0000ff;
+    font-family: 'Fredoka One', cursive;
+}
+
 .game-square {
     color: #ff00b3;
     background-color: -webkit shade($color-black, 20%);
@@ -35,10 +37,23 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     width: 1em;
     height: 2em;
 }
-.game-board {
-    border: $color-black;
-    margin:auto;
+
+#navigation {
+    background: khaki;
+    padding: 2%;
+    clear: both;
+    margin: auto;
 }
 
+.title {
+    text-align: center;
+    color: $color-green;
+    font-family: 'Fredoka One', cursive;
+}
 
-
+.userActionModal {
+    background: rgb(197, 184, 66);
+    margin: auto;
+    display: -webkit-inline-box;
+    float: left;
+}

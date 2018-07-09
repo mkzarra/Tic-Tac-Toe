@@ -1,7 +1,7 @@
 const config = require('./config')
 const store = require('./store')
 
-const signUp = function (data) {
+const signUp = function(data) {
     return $.ajax({
         url: config.apiUrl + `sign-up`,
         method: 'POST',
@@ -9,7 +9,7 @@ const signUp = function (data) {
     })
 }
 
-const signIn = function (data) {
+const signIn = function(data) {
     return $.ajax({
         url: config.apiUrl + `sign-in`,
         method: 'POST',
@@ -17,7 +17,7 @@ const signIn = function (data) {
     })
 }
 
-const changePassword = function (data) {
+const changePassword = function(data) {
     return $.ajax({
         url: config.apiUrl + 'change-password',
         method: 'PATCH',
@@ -27,7 +27,8 @@ const changePassword = function (data) {
         data
     })
 }
-const signOut = function () {
+
+const signOut = function() {
     return $.ajax({
         url: config.apiUrl + 'sign-out',
         method: 'DELETE',
@@ -36,7 +37,8 @@ const signOut = function () {
         }
     })
 }
-const getUserGames = function () {
+
+const getUserGames = function() {
     return $.ajax({
         url: config.apiUrl + `games/`,
         method: 'GET',
@@ -46,14 +48,20 @@ const getUserGames = function () {
     })
 }
 
-const findGame = function (game) {
+const showGame = function(game, data) {
+    console.log(game.id)
+    console.log(data)
     return $.ajax({
         url: config.apiUrl + `games/` + game.id,
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        },
+        data
     })
 }
 
-const createGame = function () {
+const createGame = function() {
     console.log(store.game)
     return $.ajax({
         url: config.apiUrl + `games/`,
@@ -65,7 +73,7 @@ const createGame = function () {
     })
 }
 
-const move = function (index, currentPlayer, over) {
+const move = function(index, currentPlayer, over) {
     return $.ajax({
         headers: {
             'Authorization': `Token token=` + store.user.token
@@ -91,6 +99,6 @@ module.exports = {
     signOut,
     createGame,
     getUserGames,
-    findGame,
+    showGame,
     move
 }

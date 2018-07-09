@@ -6,16 +6,22 @@ const store = require('./store')
 let currentPlayer = 'O'
 let wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 let cellLength = 9
-1
-const onEngageSignUpButton = function (event) {
+
+const onEngageSignUpButton = function(event) {
     event.preventDefault()
     $('#signUpModal').modal('show')
   }
   
-const onEngageSignInButton = function (event) {
+const onEngageSignInButton = function(event) {
     event.preventDefault()
     $('#signInModal').modal('show')
 }
+
+const onEngagePasswordChangeButton = function() {
+    event.preventDefault()
+    $('#changePasswordModal').modal('show')
+}
+
 const onSignUp = function(event) {
     event.preventDefault()
     const data = getFormFields(event.target)
@@ -43,9 +49,19 @@ const onSignOut = function(event) {
     .catch(gameUi.signOutFailure)
 }
 
-const onGetUserGames = function(){
-    gameApi.getUserGames().
-    then(gameUi.onGetGameSuccess)
+const onChangePassword = function(event) {
+    event.preventDefault()
+    const data = getFormFields(event.target)
+    console.log(data)
+    gameApi.changePassword(data)
+        .then(gameUi.onChangePasswordSuccess)
+        .catch(gameUi.onChangePasswordFailure)
+    $('#changePasswordModal').modal('hide')
+}
+
+const onGetUserGames = function() {
+    gameApi.getUserGames()
+    .then(gameUi.onGetGameSuccess)
     .catch(gameUi.onGetGameFailure)
 }
 
@@ -60,27 +76,31 @@ const onCreateNewGame = function() {
     }   
 }
 
-const onGameLoad = function(event) {
+const onShowGame = function(event, game) {
     event.preventDefault()
     console.log("here")
-    gameApi.findGame()
-        .then(gameUi.onGetGameSuccess)
-        .catch(gameUi.onGetGameFailure)
+    gameApi.showGame(game.id)
+        .then(gameUi.onShowGameSuccess)
+        .catch(gameUi.onShowGameFailure)
 }
 
 function togglePlayer() {
     if (currentPlayer === 'X') {
         currentPlayer = 'O'
-    } else {
+        $('#message').text('X\'s turn')
+  } else {
         currentPlayer = 'X'
+        $('#message').text('O\'s turn')
     }
-}
+} 
+
 
 const onSelectCell = function(event) {
     console.log(store)
     if (store.user === undefined || store.game === undefined || 
         store.game.over === true) {
-            console.log("you can't make a move.")
+            $('#errorMessage').text("You can't make a move right now. Try logging in or creating a new game.")
+            $('#nopeModal').modal('show')
         return
     }
     // TODO store move data
@@ -92,6 +112,8 @@ const onSelectCell = function(event) {
     // console.log(boardInPlay)
     // console.log(index)
     if (element === 'X' || element === 'O') {
+        $('#errorMessage').text("This cell has already been selected!")
+        $('#nopeModal').modal('show')
         return false
     } else {
         togglePlayer()
@@ -104,29 +126,10 @@ const onSelectCell = function(event) {
     for (let i = 0; i < cellLength; i++) {
         if (gameBoard[i] === currentPlayer) {
             currentPositions.push(i)
-            console.log(currentPositions)
-            console.log(currentPositions.length)
         }
     }
 
     let over = checkForWin(currentPositions, wins)
-    // wins.forEach(function(winList) {
-    //     let count = 0;
-    //     currentPositions.forEach(function(position) {
-    //         if (winList.includes(position)) { 
-    //             count++
-    //         }
-    //     })
-    //     if (count === 3) {
-    //         $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
-    //         $('#winningModal').modal('show')
-    //         gameOver = true
-    //     } else if (currentPositions.length === cellLength) {
-    //         $('#winningText').text("Tie Game")
-    //         $('#winningModal').modal('show')
-    //         gameOver = true
-    //     } 
-    // })
 
     gameApi.move(index, currentPlayer, over)
         .then(gameUi.onSelectSuccess)
@@ -143,6 +146,7 @@ function checkForWin(currentPositions, wins) {
             }
         })
         if (count === 3) {
+            $('#message').text("Congrats! " + currentPlayer + " is the winner!") 
             $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
             $('#winningModal').modal('show')
             winner = true
@@ -167,12 +171,14 @@ function checkForWin(currentPositions, wins) {
 module.exports = {
     onEngageSignUpButton,
     onEngageSignInButton,
+    onEngagePasswordChangeButton,
     onSignUp,
     onSignIn,
     onSignOut,
+    onChangePassword,
     onGetUserGames,
     onCreateNewGame,
-    onGameLoad,
+    onShowGame,
     onSelectCell,
     togglePlayer
 }

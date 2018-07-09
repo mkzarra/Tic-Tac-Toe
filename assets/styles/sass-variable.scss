@@ -1,4 +1,5 @@
 $color-black: #000000;
+$color-green: #00ff0f;
 @function shade($color, $percentage) {
     @return ($color-black, $percentage)
 }
