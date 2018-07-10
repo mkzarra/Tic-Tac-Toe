@@ -45,6 +45,7 @@ const onSignInFailure = function(error) {
 
 const signOutSuccess = function() {
     store.user = null
+    $('.stats').hide()
     $('#game-list').css('display', 'none')
     $('#create-game-button').css('display', 'none')
     $('#load-game-button').css('display', 'none')
@@ -71,13 +72,14 @@ const onChangePasswordSuccess = function(data) {
 }
 
 const onChangePasswordFailure = function(error) {
-    $('#message').text('Error on changing password')
-    $('#message').css('background-color', 'red')
-    console.log('onChangePasswordFailure ran. Data is :', error)
+  $('#message').text('Error on changing password')
+  $('#message').css('background-color', 'red')
+  console.log('onChangePasswordFailure ran. Data is :', error)
 }
 
 const onGetGameSuccess = function(data) {
     console.log('onGetGameSuccess ran. Data is :', data)
+    $('.stats').hide()
     $('#game-list').css('display', 'inline-block')
     $('#game-board').css('display', 'none')
     let userEmail = store.user.email
@@ -113,7 +115,7 @@ const onGetGameSuccess = function(data) {
     })
 }
 
-const onGetGameFailure = function(error){
+const onGetGameFailure = function(error) {
     $('#message').text('Unable to get game history. Please create new game to play.')
     $('#message').css('background-color', 'red')
     console.log('onGetGameFailure ran. Data is :', error)
@@ -123,6 +125,7 @@ const onShowGameSuccess = function(data) {
     store.game.id = data.game.id 
     $('#game-list').css('display', 'none')
     $('#game-board').css("display", "block")
+    $('.stats').hide()
 }
 
 const onShowGameFailure = function(error){

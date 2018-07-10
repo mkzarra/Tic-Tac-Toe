@@ -6,6 +6,8 @@ const store = require('./store')
 let currentPlayer = 'O'
 let wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 let cellLength = 9
+let xWins = 0
+let oWins = 0
 
 const onEngageSignUpButton = function(event) {
     event.preventDefault()
@@ -60,21 +62,22 @@ const onChangePassword = function(event) {
 }
 
 const onGetUserGames = function() {
-    gameApi.getUserGames()
-    .then(gameUi.onGetGameSuccess)
-    .catch(gameUi.onGetGameFailure)
+  gameApi.getUserGames()
+  .then(gameUi.onGetGameSuccess)
+  .catch(gameUi.onGetGameFailure)
 }
 
 const onCreateNewGame = function() {
-    if (store.user === undefined) {
-        $('#signInModal').modal('show')
-    } else {
-        $('#message').show()
-        currentPlayer = 'O'
-        gameApi.createGame()
-            .then(gameUi.onCreateGameSuccess)
-            .catch(gameUi.onCreateGameFailure) 
-    }   
+  if (store.user === undefined) {
+      $('#signInModal').modal('show')
+  } else {
+      $('.stats').show()
+      $('#message').show()
+      currentPlayer = 'O'
+      gameApi.createGame()
+          .then(gameUi.onCreateGameSuccess)
+          .catch(gameUi.onCreateGameFailure) 
+  }   
 }
 
 const onShowGame = function(event) {
@@ -138,24 +141,31 @@ const onSelectCell = function(event) {
 }
 
 function checkForWin(currentPositions, wins) {
-    let winner = false
-    wins.some(function(winList) {
-        let count = 0;
-        currentPositions.forEach(function(position) {
-            if (winList.includes(position)) { 
-                count++
-            }
-        })
-        if (count === 3) {
-            $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
-            $('#winningModal').modal('show')
-            $('#message').hide()
-            winner = true
-        } else if (currentPositions.length === 5) {
-            $('#winningText').text("Tie Game")
-            $('#winningModal').modal('show')
-            winner = true
-        } 
+  let winner = false
+  wins.some(function(winList) {
+    let count = 0;
+    currentPositions.forEach(function(position) {
+      if (winList.includes(position)) { 
+        count++
+      }
+    })
+      if (count === 3) {
+        if(currentPlayer == "X"){
+             xWins++ 
+            $("#player-x-score").text("Player X: "+ xWins)
+        }else{
+            oWins++
+            $("#player-o-score").text("Player O: "+ oWins)
+        }
+        $('#winningText').text("Congrats! " + currentPlayer + " is the winner!")
+        $('#winningModal').modal('show')
+        $('#message').hide()
+        winner = true
+      } else if (currentPositions.length === 5) {
+        $('#winningText').text("Tie Game")
+        $('#winningModal').modal('show')
+        winner = true
+      } 
     })
     return winner
 }

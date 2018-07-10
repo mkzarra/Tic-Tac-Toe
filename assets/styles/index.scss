@@ -32,11 +32,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .game-square {
     color: #ff00b3;
-    background-color: -webkit shade($color-black, 20%);
+    background-color: --webkit shade($color-black, 20%);
     font-size: 5em;
     text-align: center;
     width: 1em;
     height: 2em;
+}
+
+#game-table {
+  border: #0000f8;
 }
 
 #navigation {
@@ -44,6 +48,14 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     padding: 2%;
     clear: both;
     margin: auto;
+}
+
+.stats {
+    padding: 0.3%;
+    float: right;
+    display: --webkit inline-block;
+    margin: auto;
+    background-color: khaki
 }
 
 .title {
@@ -55,6 +67,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .userActionModal {
     background: rgb(197, 184, 66);
     margin: auto;
-    display: -webkit-inline-box;
+    display: --webkit inline-block;
     float: left;
 }
