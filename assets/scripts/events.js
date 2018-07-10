@@ -191,5 +191,7 @@ module.exports = {
     onCreateNewGame,
     onShowGame,
     onSelectCell,
-    togglePlayer
+    togglePlayer,
+    xWins,
+    oWins
 }

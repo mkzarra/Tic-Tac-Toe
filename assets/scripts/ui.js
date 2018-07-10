@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const events = require('./events')
 
 const onSignUpSuccess = function(data) {
     $('#message').text('Signed up successfully')
@@ -45,6 +46,10 @@ const onSignInFailure = function(error) {
 
 const signOutSuccess = function() {
     store.user = null
+    events.xWins = 0
+    $("#player-x-score").text("Player X: 0")
+    events.oWins = 0
+    $("#player-o-score").text("Player O: 0")
     $('.stats').hide()
     $('#game-list').css('display', 'none')
     $('#create-game-button').css('display', 'none')
