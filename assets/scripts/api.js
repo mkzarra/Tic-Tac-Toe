@@ -48,10 +48,10 @@ const getUserGames = function() {
     })
 }
 
-const showGame = function(game) {
-    console.log(game.id)
-    console.log(data)
-    console.log(game)
+const showGame = function(/*game*/) {
+    // console.log(game.id)
+    // console.log(data)
+    // console.log(game)
     return $.ajax({
         url: config.apiUrl + `games/` + store.game.id,
         method: 'GET',
@@ -62,7 +62,7 @@ const showGame = function(game) {
 }
 
 const createGame = function() {
-    console.log(store.game)
+    // console.log(store.game)
     return $.ajax({
         url: config.apiUrl + `games/`,
         method: 'POST',

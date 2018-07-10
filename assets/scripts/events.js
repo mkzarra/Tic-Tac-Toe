@@ -36,7 +36,7 @@ const onSignUp = function(event) {
 const onSignIn = function(event) {
     event.preventDefault()
     const data = getFormFields(event.target)
-    console.log(data)
+    // console.log(data)
     gameApi.signIn(data)
         .then(gameUi.onSignInSuccess)
         .catch(gameUi.onSignInFailure)
@@ -46,6 +46,8 @@ const onSignIn = function(event) {
 const onSignOut = function(event) {
     event.preventDefault()
     $('#signOutModal').modal('show')
+    xWins = 0
+    oWins = 0
     gameApi.signOut()
     .then(gameUi.signOutSuccess)
     .catch(gameUi.signOutFailure)
@@ -54,7 +56,7 @@ const onSignOut = function(event) {
 const onChangePassword = function(event) {
     event.preventDefault()
     const data = getFormFields(event.target)
-    console.log(data)
+    // console.log(data)
     gameApi.changePassword(data)
         .then(gameUi.onChangePasswordSuccess)
         .catch(gameUi.onChangePasswordFailure)
@@ -82,7 +84,7 @@ const onCreateNewGame = function() {
 
 const onShowGame = function(event) {
     event.preventDefault()
-    console.log(event)
+    // console.log(event)
     gameApi.showGame(game.id)
         .then(gameUi.onShowGameSuccess)
         .catch(gameUi.onShowGameFailure)
@@ -100,21 +102,18 @@ function togglePlayer() {
 
 
 const onSelectCell = function(event) {
-    console.log(store)
+    // console.log(store)
     if (store.user === undefined || store.game === undefined || 
         store.game.over === true) {
             $('#errorMessage').text("You can't make a move right now. Try logging in or creating a new game.")
             $('#nopeModal').modal('show')
         return
     }
-    // TODO store move data
     let element = $(this).html()
     let td = event.target
     let index = parseInt(td.id)
     let gameBoard = store.game.cells
-    // boardInPlay.push(index)
-    // console.log(boardInPlay)
-    // console.log(index)
+
     if (element === 'X' || element === 'O') {
         $('#errorMessage').text("This cell has already been selected!")
         $('#nopeModal').modal('show')
@@ -125,7 +124,6 @@ const onSelectCell = function(event) {
         $(this).html(currentPlayer)
     }
 
-    // TODO patch moves to server
     let currentPositions = []
     for (let i = 0; i < cellLength; i++) {
         if (gameBoard[i] === currentPlayer) {
@@ -169,15 +167,6 @@ function checkForWin(currentPositions, wins) {
     })
     return winner
 }
-
-// ui.js
-// show move
-// declare win or tie
-
-// api.js
-// cells: array with current state of board
-// over: true if win/tie
-// id: game id saved when it is created.
 
 module.exports = {
     onEngageSignUpButton,
